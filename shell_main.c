@@ -17,7 +17,7 @@ if (readline == NULL)
 break;
 tokens[0] = strtok(readline, " \n");
 tokens[1] = NULL;
-if (token[0] == NULL)
+if (tokens[0] == NULL)
 {
 free(readline);
 continue;
