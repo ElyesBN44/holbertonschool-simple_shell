@@ -1,10 +1,11 @@
 #include "shell.h"
-
-
-
+/**
+* main - Entry point
+* Return: Always 0 on success.
+*/
 int main(void)
 {
-char *readline , *tokens[2];
+char *readline, *tokens[2];
 pid_t pid;
 int status;
 while (1)
@@ -24,23 +25,23 @@ continue;
 pid = fork();
 if (pid == -1)
 {
-perror ("Fork failed");
-free (readline);
+perror("Fork failed");
+free(readline);
 continue;
 }
 if (pid == 0)
 {
 if (execve(tokens[0], tokens, environ) == -1)
 {
-perror ("command not found");
-exit (127);
+perror("command not found");
+exit(127);
 }
 }
 else
 {
-wait (&status);
+wait(&status);
 }
-free (readline);
+free(readline);
 }
 return (0);
 }
