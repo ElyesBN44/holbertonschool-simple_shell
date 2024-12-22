@@ -1,7 +1,10 @@
 #include "shell.h"
-
-
-
+/**
+* execute_line - Executes a single command using execve.
+* @command: The command to execute.
+*
+* Return: 0 on success, or the error code if an error occurs.
+*/
 int execute_line(char *command)
 {
 pid_t pid;
