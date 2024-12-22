@@ -1,7 +1,8 @@
 #include "shell.h"
-
-
-
+/**
+* read_line - reads a line from stdin
+* Return: a pointer to the read line
+*/
 char *read_line(void)
 {
 char *buffer = NULL;
@@ -19,5 +20,5 @@ perror("Error reading input");
 exit(1);
 }
 }
-return buffer;
+return (buffer);
 }
