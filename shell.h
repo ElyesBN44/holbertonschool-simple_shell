@@ -11,5 +11,6 @@
 #include <sys/types.h>
 
 int main(void);
+extern char **environ;
 
 #endif
