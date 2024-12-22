@@ -12,5 +12,6 @@
 
 int main(void);
 extern char **environ;
+char *read_line(void);
 
 #endif
