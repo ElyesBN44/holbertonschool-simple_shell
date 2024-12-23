@@ -72,3 +72,8 @@
 </tr>
 </tbody>
 </table>
+<h2>Contributors</h2>
+<ul>
+<li><a href="https://github.com/Yassine-Gharbi86" target="_blank">Yassine Gharbi</a></li>
+<li><a href="https://github.com/ElyesBN44" target="_blank">Elyes Ben Naceur</a></li>
+</ul>
