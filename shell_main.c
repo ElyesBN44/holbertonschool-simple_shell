@@ -1,39 +1,20 @@
 #include "shell.h"
 
 /**
- * main - entry point of the shell 
- * Return: Always 0 on success.
+ * execute_command - Executes a command in a child process.
+ * @tokens: Array of command tokens.
+ * @readline: The input line to free on error.
  */
-
- int main (void)
+void execute_command(char *tokens[], char *readline)
 {
-char *readline, *tokens[2];
 pid_t pid;
 int status;
-
-while (1)
-{
-if (isatty(STDIN_FILENO))
-printf("$ ");
-readline = line_reader();
-if (readline == NULL)
-{
-printf("\nExiting shell.. \n");
-break;
-}
-tokens[0] = strtok(readline, "\n");
-tokens[1] = NULL;
-if (tokens[0] == NULL)
-{
-free(readline);
-continue;
-}
 pid = fork();
 if (pid == -1)
 {
 perror("Fork failed");
 free(readline);
-continue;
+return;
 }
 if (pid == 0)
 {
@@ -45,10 +26,35 @@ exit(127);
 }
 }
 else
-{
 wait(&status);
 }
+
+/**
+ * main - Entry point of the shell.
+ * Return: Always 0 on success.
+ */
+int main(void)
+{
+char *readline, *tokens[2];
+while (1)
+{
+if (isatty(STDIN_FILENO))
+printf("$ ");
+readline = line_reader();
+if (readline == NULL)
+{
+printf("\nExiting shell..\n");
+break;
+}
+tokens[0] = strtok(readline, "\n");
+tokens[1] = NULL;
+if (tokens[0] == NULL)
+{
+free(readline);
+continue;
+}
+execute_command(tokens, readline);
 free(readline);
 }
-return (0)
+return (0);
 }
