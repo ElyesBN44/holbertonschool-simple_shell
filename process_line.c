@@ -1,38 +1,31 @@
 #include "shell.h"
 /**
-* execute_line - Executes a single command using execve.
-* @command: The command to execute.
-*
-* Return: 0 on success, or the error code if an error occurs.
+* process_line - Executes a single command by forking and using execve.
+* @path: path to the command you will execute.
+* @tokens: Where the commands are stocked.
+* Return: Exits the executed command.
 */
-int execute_line(char *command)
+int process_line(char **tokens, char *path)
 {
 pid_t pid;
-int status;
+int status = 0;
 pid = fork();
 if (pid == -1)
 {
 perror("Fork failed");
-return (1);
+exit(1);
 }
 if (pid == 0)
 {
-char *args[] = {command, NULL};
-if (execve(command, args, environ) == -1)
-{
-perror("Execve failed");
+execve(path, tokens, environ);
+perror("execve failed");
 exit(2);
-}
 }
 else
 {
-if (wait(&status) == -1)
-{
-perror("Wait failed");
-return (3);
-}
+wait(&status);
 if (WIFEXITED(status))
-return (WEXITSTATUS(status));
+status = WEXITSTATUS(status);
 }
-return (0);
+return (status);
 }
