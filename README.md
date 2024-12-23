@@ -1,1 +1,4 @@
-read me tester
+<h1>Simple Shell Project 🖥️</h1>
+<img src="https://cdn.static-media.blent.ai/photos/blog/photo-1629654297299-c8506221ca97.jpg" alt="Description Image" style="max-width: 100%; height: auto;">
+<h2>Description</h2>
+<p>The Simple Shell Project is a foundational implementation of a UNIX command line interpreter. It is designed to execute commands entered by the user, interacting with the operating system to perform tasks. While limited in functionality compared to robust shells, this project focuses on core concepts such as command execution and handling environment variables. Its primary purpose is educational, providing insights into how shells work at a fundamental level.</p>
