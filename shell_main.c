@@ -1,21 +1,27 @@
 #include "shell.h"
+
 /**
-* main - Entry point
-* Return: Always 0 on success.
-*/
-int main(void)
+ * main - entry point of the shell 
+ * Return: Always 0 on success.
+ */
+
+ int main (void)
 {
 char *readline, *tokens[2];
 pid_t pid;
 int status;
+
 while (1)
 {
 if (isatty(STDIN_FILENO))
 printf("$ ");
-readline = read_line();
+readline = line_reader();
 if (readline == NULL)
+{
+printf("\nExiting shell.. \n");
 break;
-tokens[0] = strtok(readline, " \n");
+}
+tokens[0] = strtok(readline, "\n");
 tokens[1] = NULL;
 if (tokens[0] == NULL)
 {
@@ -34,6 +40,7 @@ if (pid == 0)
 if (execve(tokens[0], tokens, environ) == -1)
 {
 perror("command not found");
+free(readline);
 exit(127);
 }
 }
@@ -43,5 +50,5 @@ wait(&status);
 }
 free(readline);
 }
-return (0);
+return (0)
 }
