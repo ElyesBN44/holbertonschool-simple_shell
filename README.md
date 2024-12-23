@@ -57,3 +57,18 @@
     <li><code>wait4</code> (man 2 wait4)</li>
     <li><code>write</code> (man 2 write)</li>
 </ul>
+<h2>Files and Descriptions 📂</h2>
+<table border="1">
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+ <tbody>
+<tr>
+<td>shell.h</td>
+<td>Header file that includes function prototypes and necessary libraries for the shell.</td>
+</tr>
+</tbody>
+</table>
