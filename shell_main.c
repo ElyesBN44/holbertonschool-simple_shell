@@ -1,60 +1,47 @@
 #include "shell.h"
 
 /**
- * execute_command - Executes a command in a child process.
- * @tokens: Array of command tokens.
- * @readline: The input line to free on error.
- */
-void execute_command(char *tokens[], char *readline)
-{
-pid_t pid;
-int status;
-pid = fork();
-if (pid == -1)
-{
-perror("Fork failed");
-free(readline);
-return;
-}
-if (pid == 0)
-{
-if (execve(tokens[0], tokens, environ) == -1)
-{
-perror("command not found");
-free(readline);
-exit(127);
-}
-}
-else
-wait(&status);
-}
-
-/**
- * main - Entry point of the shell.
+ * main - Main function.
  * Return: Always 0 on success.
  */
 int main(void)
 {
-char *readline, *tokens[2];
+char *readline, **tokens, *path = NULL;
+int status;
 while (1)
 {
 if (isatty(STDIN_FILENO))
 printf("$ ");
-readline = line_reader();
-if (readline == NULL)
-{
-printf("\nExiting shell..\n");
-break;
-}
-tokens[0] = strtok(readline, "\n");
-tokens[1] = NULL;
-if (tokens[0] == NULL)
+readline = read_line();
+if (strcmp("env\n", readline) == 0)
 {
 free(readline);
+_env();
 continue;
 }
-execute_command(tokens, readline);
+if (strcmp(readline, "exit\n") == 0)
+{
 free(readline);
+break;
 }
-return (0);
+tokens = parse_the_line(readline, TOK_DELIM);
+if (*tokens == NULL)
+{
+free_d_p(tokens);
+if (path == NULL)
+{
+perror("commant not found");
+free(path);
+free_d_p(tokens);
+return (3);
+}
+if (path != NULL)
+{
+status = execute_line(tokens, path);
+free(path);
+}
+free_d_p(tokens);
+}
+return (status);
+}
 }
