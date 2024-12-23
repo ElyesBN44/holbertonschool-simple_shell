@@ -12,7 +12,7 @@
 
 int main(void);
 
-char *read_line(void);
-int execute_line(char *command);
+char *line_read(void);
+int process_line(char **tokens, char *path);
 
 #endif
