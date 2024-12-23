@@ -1,17 +1,17 @@
 #include "shell.h"
 /**
-* read_line - reads a line from stdin
+* line_read - reads a line from stdin
 * Return: a pointer to the read line
 */
-char *read_line(void)
+char *line_read(void)
 {
-char *buffer = NULL;
-size_t buffer_size = 0;
+char *input = NULL;
+size_t buffsize = 0;
 ssize_t line_length;
-line_length = getline(&buffer, &buffer_size, stdin);
+line_length = getline(&input, &buffsize, stdin);
 if (line_length == -1)
 {
-free(buffer);
+free(input);
 if (feof(stdin))
 exit(0);
 else
@@ -20,5 +20,5 @@ perror("Error reading input");
 exit(1);
 }
 }
-return (buffer);
+return (input);
 }
