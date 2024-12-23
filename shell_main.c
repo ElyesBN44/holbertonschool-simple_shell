@@ -12,7 +12,7 @@ while (1)
 {
 if (isatty(STDIN_FILENO))
 printf("$ ");
-readline = read_line();
+readline = line_read();
 if (strcmp("env\n", readline) == 0)
 {
 free(readline);
@@ -37,7 +37,7 @@ return (3);
 }
 if (path != NULL)
 {
-status = execute_line(tokens, path);
+status = process_line(tokens, path);
 free(path);
 }
 free_d_p(tokens);
