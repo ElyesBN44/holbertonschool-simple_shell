@@ -11,7 +11,7 @@
 #include <sys/types.h>
 
 int main(void);
-extern char **environ;
+
 char *read_line(void);
 int execute_line(char *command);
 
