@@ -70,6 +70,18 @@
 <td>shell.h</td>
 <td>Header file that includes function prototypes and necessary libraries for the shell.</td>
 </tr>
+<tr>
+<td>shell_main.c</td>
+<td>Contains the main function, which serves as the entry point for the shell. It handles the shell loop, reads input, and manages commands like <code>exit</code> and<code> env</code>.</td>
+</tr>
+<tr>
+<td>line_reader.c</td>
+<td>Defines the line_read function, which reads a line of input from the user and handles errors or end-of-file situations gracefully.</td>
+</tr>
+<tr>
+<td>process_line.c</td>
+<td>Implements the process_line function, which forks a child process to execute a command using execve. It also manages the status of executed commands.</td>
+</tr>
 </tbody>
 </table>
 <h2>Contributors</h2>
