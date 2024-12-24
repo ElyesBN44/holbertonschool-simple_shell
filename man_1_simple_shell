@@ -1,30 +1,124 @@
-.TH MYPROGRAM 1 "December 2024" "1.0" "User Commands"
+.TH SIMPLE_SHELL 1 "December 2024" "Simple Shell Manual" "User Commands"
 .SH NAME
-myprogram \- a brief description of the program
+simple_shell — a simple UNIX command interpreter
+
 .SH SYNOPSIS
-.B myprogram
-[options] [arguments]
+.B simple_shell
+
 .SH DESCRIPTION
-This is a detailed description of what the program does.
+.B simple_shell
+is a basic implementation of a UNIX command line interpreter that provides an interactive and non-interactive environment for executing shell commands.
 
-.SH OPTIONS
+.SH LEARNING OBJECTIVES
 .TP
-.B \-h, \--help
-Display help information.
+By using and understanding this program, you will learn:
+.RS
+.IP •
+Who designed and implemented the original Unix operating system.
+.IP •
+Who wrote the first version of the UNIX shell.
+.IP •
+Who invented the B programming language, the predecessor to C.
+.IP •
+Who is Ken Thompson.
+.IP •
+How a shell operates.
+.IP •
+The difference between a process ID (pid) and a parent process ID (ppid).
+.IP •
+How to manipulate the environment of the current process.
+.IP •
+The difference between functions and system calls.
+.IP •
+How to create processes and manage their lifecycle.
+.IP •
+How the shell uses the PATH to locate and execute programs.
+.IP •
+How to use the execve system call to execute programs.
+.IP •
+How to suspend a process until one of its child processes terminates.
+.IP •
+What EOF (End-of-File) signifies.
+.RE
 
+.SH FEATURES
 .TP
-.B \-v, \--version
-Show version information.
+.B Interactive Mode:
+Allows users to type commands which are executed immediately.
+.TP
+.B Non-Interactive Mode:
+Executes commands from a file or standard input until EOF.
+.TP
+.B Error Handling:
+Displays error messages when a command cannot be executed.
+.TP
+.B Built-in Commands:
+.RS
+.IP •
+.B exit: Exits the shell.
+.IP •
+.B env: Displays the current environment variables.
+.RE
+.TP
+.B PATH Resolution:
+Searches for executables in directories listed in the PATH environment variable.
 
-.SH EXAMPLES
-.B myprogram
-Runs the program with default options.
+.SH REQUIREMENTS
+.B simple_shell
+adheres to the following:
+.TP
+.RS
+.IP •
+Complies with the Betty coding style.
+.IP •
+Has no memory leaks.
+.IP •
+Limits functions to a maximum of 5 per file.
+.IP •
+Includes header files that are properly include guarded.
+.IP •
+Uses system calls only when necessary.
+.RE
 
-.B myprogram \-h
-Displays help information.
+.SH ALLOWED FUNCTIONS AND SYSTEM CALLS
+.B simple_shell
+makes use of the following functions and system calls:
+.TP
+.RS
+.IP •
+Access: Baccess(2)P
+.IP •
+Environment manipulation: Bgetenv(3)P, Bputenv(3)P
+.IP •
+File operations: Bopen(2)P, Bread(2)P, Bwrite(2)P, Bclose(2)P
+.IP •
+Process control: Bfork(2)P, Bexecve(2)P, Bwait(2)P
+.IP •
+Utilities: Bprintf(3)P, Bmalloc(3)P, Bfree(3)P
+.RE
 
-.SH SEE ALSO
-man(1)
+.SH USAGE
+.TP
+.B Compilation:
+To compile the program, use:
+.EX
+$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+.EE
+.TP
+.B Interactive Mode:
+Run the shell and type commands:
+.EX
+$ ./hsh
+($) /bin/ls
+($) exit
+.EE
+.TP
+.B Non-Interactive Mode:
+Pass commands via a file or pipe:
+.EX
+$ echo "/bin/ls" | ./hsh
+.EE
 
-.SH AUTHOR
-Written by Your Name.
+.SH EXIT STATUS
+.B simple_shell
+returns 0 on successful execution. On failure, it returns a non-zero value.
