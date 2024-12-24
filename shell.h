@@ -11,8 +11,9 @@
 #include <sys/types.h>
 
 int main(void);
-
+extern char **environ;
 char *line_read(void);
+char **parse_the_line(char *readline, const char *separate);
 int process_line(char **tokens, char *path);
 
 #endif
