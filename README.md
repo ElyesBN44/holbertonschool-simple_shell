@@ -82,6 +82,26 @@
 <td>process_line.c</td>
 <td>Implements the process_line function, which forks a child process to execute a command using execve. It also manages the status of executed commands.</td>
 </tr>
+<tr>
+<td>_env.c</td>
+<td>Contains the<code> _env </code>function, which prints all environment variables to the standard output.</td>
+</tr>
+<tr>
+<td>_env.c</td>
+<td>Contains the<code> _env </code>function, which prints all environment variables to the standard output.</td>
+</tr>
+<tr>
+<td>check_path.c</td>
+<td>Implements the <code>check_path</code> function, which verifies if a given command exists in the system's PATH.</td>
+</tr>
+<tr>
+<td>parse_the_line.c</td>
+<td>Contains the <code>parse_the_line</code> function, which splits a string into an array of words based on specified delimiters.</td>
+</tr>
+<tr>
+<td>free.c</td>
+<td>Defines the<code> free_d_p </code>function, which frees memory allocated for a dynamically created array of pointers.</td>
+</tr>
 </tbody>
 </table>
 <h2>Contributors</h2>
