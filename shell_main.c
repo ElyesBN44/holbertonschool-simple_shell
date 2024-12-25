@@ -30,10 +30,11 @@ if (*tokens == NULL)
 free_d_p(tokens);
 if (path == NULL)
 {
-perror("commant not found");
+perror("command not found");
 free(path);
 free_d_p(tokens);
 return (3);
+}
 }
 if (path != NULL)
 {
@@ -43,5 +44,4 @@ free(path);
 free_d_p(tokens);
 }
 return (status);
-}
 }
