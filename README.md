@@ -3,7 +3,14 @@
 <h2>Description 📝</h2>
 <p>The Simple Shell Project is a foundational implementation of a UNIX command line interpreter. It is designed to execute commands entered by the user, interacting with the operating system to perform tasks. While limited in functionality compared to robust shells, this project focuses on core concepts such as command execution and handling environment variables. Its primary purpose is educational, providing insights into how shells work at a fundamental level.</p>
 <h2>Features 🚀</h2>
-<p></p>
+<ul>
+<li>Reads user commands and executes them using system calls.</li>
+<li>Handles built-in commands like <code>exit</code> and <code>env</code>.</li>
+<li>Parses user input into arguments for easy execution.</li>
+<li>Searches for executable commands in the system's PATH.</li>
+<li>Efficient memory management with custom functions for freeing allocated resources.</li>
+<li>Error handling for invalid commands and input errors.</li>
+</ul>
 <h2>How to Run 👨🏻‍💻</h2>
 <p>To compile and run the Simple Shell, you can follow these steps:</p>
 <ol>
@@ -101,6 +108,7 @@
 </tbody>
 </table>
 <h2>Contributors</h2>
+<p>This project was entirely created by:</p>
 <ul>
 <li><a href="https://github.com/Yassine-Gharbi86" target="_blank">Yassine Gharbi</a></li>
 <li><a href="https://github.com/ElyesBN44" target="_blank">Elyes Ben Naceur</a></li>
