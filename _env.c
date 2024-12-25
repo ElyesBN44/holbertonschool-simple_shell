@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
 * _env - Prints environment variables.
 */
