@@ -87,10 +87,6 @@
 <td>Contains the<code> _env </code>function, which prints all environment variables to the standard output.</td>
 </tr>
 <tr>
-<td>_env.c</td>
-<td>Contains the<code> _env </code>function, which prints all environment variables to the standard output.</td>
-</tr>
-<tr>
 <td>check_path.c</td>
 <td>Implements the <code>check_path</code> function, which verifies if a given command exists in the system's PATH.</td>
 </tr>
