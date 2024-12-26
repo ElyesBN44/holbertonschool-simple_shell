@@ -19,7 +19,7 @@ strcpy(path, command);
 return (path);
 }
 final_path = (char *) malloc(1024 * sizeof(char));
-while (path_token != NULL);
+while (path_token != NULL)
 {
 array[i] = path_token;
 i++;
@@ -30,7 +30,7 @@ while (array[i] != NULL)
 {
 strcpy(final_path, array[i]);
 strcat(final_path, "/");
-strcat(final_path, command)
+strcat(final_path, command);
 strcat(final_path, "\0");
 if (stat(final_path, &info) == 0)
 {
