@@ -15,11 +15,11 @@
 extern char **environ;
 
 char *line_read(void);
-char **parse_the_line(char *readline, const char *separate);
-int process_line(char **tokens, char *path);
+char **parse_the_line(char *, const char *);
+int process_line(char **, char *);
 void _env(void);
-char *check_path(char *command);
-void free_d_p(char **array);
+char *check_path(char *);
+void free_d_p(char **);
 
 
 
