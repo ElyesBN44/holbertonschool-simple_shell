@@ -1,124 +1,80 @@
-.TH SIMPLE_SHELL 1 "December 2024" "Simple Shell Manual" "User Commands"
+.TH HSH 1 "December 2024" "1.0" "Simple Shell Manual"
 .SH NAME
-simple_shell — a simple UNIX command interpreter
-
+hsh \- A simple UNIX command-line interpreter.
 .SH SYNOPSIS
-.B simple_shell
-
+.B hsh
 .SH DESCRIPTION
-.B simple_shell
-is a basic implementation of a UNIX command line interpreter that provides an interactive and non-interactive environment for executing shell commands.
+The Simple Shell Project is a foundational implementation of a UNIX command-line interpreter. 
+It executes commands entered by the user, interacts with the operating system, and focuses on core concepts such as command execution and environment variable handling.
 
-.SH LEARNING OBJECTIVES
-.TP
-By using and understanding this program, you will learn:
-.RS
-.IP •
-Who designed and implemented the original Unix operating system.
-.IP •
-Who wrote the first version of the UNIX shell.
-.IP •
-Who invented the B programming language, the predecessor to C.
-.IP •
-Who is Ken Thompson.
-.IP •
-How a shell operates.
-.IP •
-The difference between a process ID (pid) and a parent process ID (ppid).
-.IP •
-How to manipulate the environment of the current process.
-.IP •
-The difference between functions and system calls.
-.IP •
-How to create processes and manage their lifecycle.
-.IP •
-How the shell uses the PATH to locate and execute programs.
-.IP •
-How to use the execve system call to execute programs.
-.IP •
-How to suspend a process until one of its child processes terminates.
-.IP •
-What EOF (End-of-File) signifies.
-.RE
+This shell is designed for educational purposes to demonstrate how basic shell operations are implemented.
 
 .SH FEATURES
 .TP
-.B Interactive Mode:
-Allows users to type commands which are executed immediately.
+\- Reads user commands and executes them using system calls.
 .TP
-.B Non-Interactive Mode:
-Executes commands from a file or standard input until EOF.
+\- Supports built-in commands like \fBexit\fP and \fBenv\fP.
 .TP
-.B Error Handling:
-Displays error messages when a command cannot be executed.
+\- Parses user input into arguments for easy execution.
 .TP
-.B Built-in Commands:
-.RS
-.IP •
-.B exit: Exits the shell.
-.IP •
-.B env: Displays the current environment variables.
-.RE
+\- Searches for executable commands in the system's \fBPATH\fP.
 .TP
-.B PATH Resolution:
-Searches for executables in directories listed in the PATH environment variable.
-
-.SH REQUIREMENTS
-.B simple_shell
-adheres to the following:
+\- Includes efficient memory management functions.
 .TP
-.RS
-.IP •
-Complies with the Betty coding style.
-.IP •
-Has no memory leaks.
-.IP •
-Limits functions to a maximum of 5 per file.
-.IP •
-Includes header files that are properly include guarded.
-.IP •
-Uses system calls only when necessary.
-.RE
-
-.SH ALLOWED FUNCTIONS AND SYSTEM CALLS
-.B simple_shell
-makes use of the following functions and system calls:
-.TP
-.RS
-.IP •
-Access: Baccess(2)P
-.IP •
-Environment manipulation: Bgetenv(3)P, Bputenv(3)P
-.IP •
-File operations: Bopen(2)P, Bread(2)P, Bwrite(2)P, Bclose(2)P
-.IP •
-Process control: Bfork(2)P, Bexecve(2)P, Bwait(2)P
-.IP •
-Utilities: Bprintf(3)P, Bmalloc(3)P, Bfree(3)P
-.RE
+\- Provides error handling for invalid commands and input errors.
 
 .SH USAGE
-.TP
-.B Compilation:
-To compile the program, use:
+To compile and run the Simple Shell:
+.PP
+1. Open a terminal.
+.PP
+2. Navigate to the directory containing the source files.
+.PP
+3. Compile the project:
 .EX
-$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 .EE
-.TP
-.B Interactive Mode:
-Run the shell and type commands:
+4. Run the compiled executable:
 .EX
-$ ./hsh
-($) /bin/ls
-($) exit
-.EE
-.TP
-.B Non-Interactive Mode:
-Pass commands via a file or pipe:
-.EX
-$ echo "/bin/ls" | ./hsh
+./hsh
 .EE
 
-.SH EXIT STATUS
-.B simple_shell
-returns 0 on successful execution. On failure, it returns a non-zero value.
+.SH ALLOWED FUNCTIONS
+This shell relies on the following functions and system calls:
+.TP
+\fBaccess, chdir, close, closedir, execve, exit, fork, getline,\fP and many more. See the project's source code for a comprehensive list.
+
+.SH FILES
+.TP
+.B shell.h
+Header file containing function prototypes and necessary libraries.
+.TP
+.B shell_main.c
+Contains the main function, managing the shell loop, input, and built-in commands like \fBexit\fP and \fBenv\fP.
+.TP
+.B line_reader.c
+Reads user input while handling errors and end-of-file scenarios.
+.TP
+.B process_line.c
+Forks processes and executes commands using \fBexecve\fP.
+.TP
+.B _env.c
+Prints environment variables to standard output.
+.TP
+.B check_path.c
+Validates if a command exists in the system's \fBPATH\fP.
+.TP
+.B parse_the_line.c
+Splits user input into tokens for easier execution.
+.TP
+.B free.c
+Manages memory deallocation for dynamically allocated arrays.
+
+.SH AUTHORS
+This project was created by:
+.TP
+\- Yassine Gharbi (\fIhttps://github.com/Yassine-Gharbi86\fP)
+.TP
+\- Elyes Ben Naceur (\fIhttps://github.com/ElyesBN44\fP)
+.SH SEE ALSO
+\fBbash(1)\fP, \fBsh(1)\fP
