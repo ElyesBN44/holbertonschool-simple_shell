@@ -17,6 +17,7 @@ int main(void);
 char *line_read(void);
 char **parse_the_line(char *readline, const char *separate);
 int process_line(char **tokens, char *path);
+char *check_path(char *command);
 void _env(void);
 
 void free_d_p(char **array);
