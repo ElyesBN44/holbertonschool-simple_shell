@@ -28,13 +28,15 @@ tokens = parse_the_line(readline, TOK_DELIM);
 if (*tokens == NULL)
 {
 free_d_p(tokens);
+continue;
+}
+path = check_path(*tokens);
 if (path == NULL)
 {
 perror("command not found");
 free(path);
 free_d_p(tokens);
 return (3);
-}
 }
 if (path != NULL)
 {
