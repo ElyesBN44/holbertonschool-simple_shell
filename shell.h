@@ -19,6 +19,7 @@ char **parse_the_line(char *, const char *);
 int process_line(char **, char *);
 void _env(void);
 char *check_path(char *);
+char *_getenv(const char *name);
 void free_d_p(char **);
 
 
